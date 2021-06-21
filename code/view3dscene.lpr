@@ -73,7 +73,7 @@ uses SysUtils, Math, Classes,
   X3DFields, CastleInternalShapeOctree, X3DNodes, X3DLoad, CastleScene, X3DTriangles,
   CastleSceneCore, X3DCameraUtils, CastleInternalBackground,
   CastleRenderOptions, CastleShapes, CastleViewport,
-  CastleMaterialProperties, CastleInternalRenderer,
+  CastleMaterialProperties, CastleInternalRenderer, CastleInternalGLShadowVolumes,
   { view3dscene-specific units: }
   V3DSceneTextureFilters, V3DSceneLights, V3DSceneRaytrace,
   V3DSceneNavigationTypes, V3DSceneSceneChanges, V3DSceneBGColors, V3DSceneViewpoints,
@@ -3151,6 +3151,7 @@ begin
 
     750: ShadowVolumes := not ShadowVolumes;
     760: ShadowVolumesRender := not ShadowVolumesRender;
+    761: InternalUseOldShadowVolumes := not InternalUseOldShadowVolumes;
 
     770: InitialShowBBox := not InitialShowBBox;
     771: InitialShowStatus := not InitialShowStatus;
@@ -3330,6 +3331,8 @@ begin
       M2.Append(TMenuItemChecked.Create('Enable (Requires Light With shadowVolumesMain)', 750,
         ShadowVolumes, true));
       M2.Append(TMenuItemChecked.Create('Render shadow volumes', 760,
+        ShadowVolumesRender, true));
+      M2.Append(TMenuItemChecked.Create('Old shadow volumes', 761,
         ShadowVolumesRender, true));
       M.Append(M2);
     M.Append(TMenuSeparator.Create);
