@@ -3153,6 +3153,7 @@ begin
     760: ShadowVolumesRender := not ShadowVolumesRender;
     761: InternalUseOldShadowVolumes := not InternalUseOldShadowVolumes;
     762: InternalShadowVolumesUseDepth := not InternalShadowVolumesUseDepth;
+    763: InternalShadowVolumesUseDepthV2 := not InternalShadowVolumesUseDepthV2;
 
     770: InitialShowBBox := not InitialShowBBox;
     771: InitialShowStatus := not InitialShowStatus;
@@ -3334,9 +3335,11 @@ begin
       M2.Append(TMenuItemChecked.Create('Render shadow volumes', 760,
         ShadowVolumesRender, true));
       M2.Append(TMenuItemChecked.Create('Old shadow volumes', 761,
-        ShadowVolumesRender, true));
+        InternalUseOldShadowVolumes, true));
       M2.Append(TMenuItemChecked.Create('Use depth in shadow volumes', 762,
-        ShadowVolumesRender, true));
+        InternalShadowVolumesUseDepth, true));
+      M2.Append(TMenuItemChecked.Create('Use depth V2 (can save internal scene)', 763,
+        InternalShadowVolumesUseDepthV2, true));
       M.Append(M2);
     M.Append(TMenuSeparator.Create);
     M.Append(TMenuItemChecked.Create(
